@@ -27,7 +27,7 @@
     <p id="current-time"></p>
     <div class="pic-container">
         <a href="{{ url_for('orders.get_all_orders') }}" class="order-now-btn">Order Now</a>
-        <a href="{{ url_for('pages.locations') }}" class="location-btn">Find Us- coming soon</a>
+        <a href="{{ url_for('pages.locations') }}" class="location-btn">Find Us</a>
     </div>
 </section>
 
@@ -65,6 +65,7 @@
             text-align: center;
 
         }
+
         .hero-section h2 {
             font-size: 70px;
             color: #05070b;
@@ -73,6 +74,7 @@
             display: inline-block;
             text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
         }
+
         .hero-section p {
             font-size: 45px;
             color: #f6f5f5;
@@ -82,7 +84,8 @@
     <div class="card-container">
         <h4>Featured Drinks</h4>
         <section class="menu-card menu-card1">
-            <img src="{{ url_for('static', filename='img/coffee1.jpg') }}" alt="Iced Coffee" class="menu-image menu-image1">
+            <img src="{{ url_for('static', filename='img/coffee1.jpg') }}" alt="Iced Coffee"
+                class="menu-image menu-image1">
             <!-- description container -->
             <section class="menu-description-container menu-description-container1">
                 <span class="menu-title">Iced Coffee</span>
@@ -113,7 +116,8 @@
         </section>
         <!-- featured drinks  -->
         <section class="menu-card menu-card4">
-            <img src="{{ url_for('static', filename='img/coffee4.jpg') }}" alt="Cappuccino" class="menu-image menu-image4">
+            <img src="{{ url_for('static', filename='img/coffee4.jpg') }}" alt="Cappuccino"
+                class="menu-image menu-image4">
             <section class="menu-description-container menu-description-container4">
                 <span class="menu-title">Cappuccino</span>
                 <p class="menu-description">A perfect balance of espresso, steamed milk, and foam.</p>
@@ -128,12 +132,16 @@
         <p>Enjoy our exclusive deals and discounts on your favorite coffee drinks!</p>
         <div class="special-offers-grid">
             <section class="special-offer-card">
-                <img src="{{ url_for('static', filename='img/coffee5.jpg') }}" alt="Special Offers" class="special-offers-image">
-                <span class="pumpkin-spice-description">Try our limited-time Pumpkin Spice Latte, a perfect blend of espresso, steamed milk, and pumpkin spice flavor.</span>
+                <img src="{{ url_for('static', filename='img/coffee5.jpg') }}" alt="Special Offers"
+                    class="special-offers-image">
+                <span class="pumpkin-spice-description">Try our limited-time Pumpkin Spice Latte, a perfect blend of
+                    espresso, steamed milk, and pumpkin spice flavor.</span>
             </section>
             <section class="special-offer-card">
-                <img src="{{ url_for('static', filename='img/coffee6.jpg') }}" alt="Special Offers" class="special-offers-image">
-                <span class="matcha-latte-description">Indulge in our Matcha Latte, a creamy and vibrant green tea latte made with high-quality matcha powder and steamed milk.</span>
+                <img src="{{ url_for('static', filename='img/coffee6.jpg') }}" alt="Special Offers"
+                    class="special-offers-image">
+                <span class="matcha-latte-description">Indulge in our Matcha Latte, a creamy and vibrant green tea latte
+                    made with high-quality matcha powder and steamed milk.</span>
             </section>
         </div>
         <a href="{{ url_for('orders.get_all_orders') }}" class="show-offers-btn">Show Offers</a>
@@ -143,33 +151,42 @@
         <h5>Customer Reviews</h5>
         <p>See what our customers are saying about us!</p>
         <section class="review-card review-card1">
-            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 1" class="review-avatar review-avatar1">
+            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 1"
+                class="review-avatar review-avatar1">
             <span class="review-name">Emily R.</span>
             <!-- add ratings stars -->
-            <p class="review-text">"The best coffee I've ever had! The atmosphere is cozy and the staff is friendly."</p>
+            <p class="review-text">"The best coffee I've ever had! The atmosphere is cozy and the staff is friendly."
+            </p>
         </section>
         <section class="review-card review-card2">
-            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 2" class="review-avatar review-avatar2">
+            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 2"
+                class="review-avatar review-avatar2">
             <span class="review-name">Michael S.</span>
             <p class="review-text">"I love the variety of drinks they offer. The iced coffee is my favorite!"</p>
         </section>
         <section class="review-card review-card3">
-            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 3" class="review-avatar review-avatar3">
+            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Customer 3"
+                class="review-avatar review-avatar3">
             <span class="review-name">Sophia L.</span>
             <p class="review-text">"The perfect place to relax and enjoy a cup of coffee. Highly recommend!"</p>
         </section>
         <section class="review-card review-card4">
-            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 4" class="review-avatar review-avatar4">
+            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 4"
+                class="review-avatar review-avatar4">
             <span class="review-name">Mariah B.</span>
-            <p class="review-text">"The staff is always welcoming and the coffee is consistently delicious. A must-visit!"</p>
+            <p class="review-text">"The staff is always welcoming and the coffee is consistently delicious. A
+                must-visit!"</p>
         </section>
         <section class="review-card review-card5">
-            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 5" class="review-avatar review-avatar5">
+            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 5"
+                class="review-avatar review-avatar5">
             <span class="review-name">John D.</span>
-            <p class="review-text">"A fantastic place for coffee lovers. The ambiance is perfect for working or relaxing."</p>
+            <p class="review-text">"A fantastic place for coffee lovers. The ambiance is perfect for working or
+                relaxing."</p>
         </section>
         <section class="review-card review-card6">
-            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 6" class="review-avatar review-avatar6">
+            <img src="{{ url_for('static', filename='img/avatar.png')}}" alt="Customer 6"
+                class="review-avatar review-avatar6">
             <span class="review-name">David M.</span>
             <p class="review-text">"Great coffee and friendly staff. I always enjoy my visits here."</p>
         </section>
