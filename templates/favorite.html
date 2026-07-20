@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Favorite - Good Days Coffee{% endblock %}
+
+{% block content %}
+<section class="favorite-container">
+    <h2>My Favorite Drinks</h2>
+    <p>Here are the drinks you've marked as your favorites.</p>
+    <ul class="favorite-drinks">
+        {% for drink in favorite_drinks %}
+            <li class="favorite-drink-menu">
+                <h3>{{ drink.name }}</h3>
+                <p>{{ drink.description }}</p>
+                <p>Price: ${{ drink.price }}</p>
+                <form method="POST" action="{{ url_for('favorite.remove_favorite', menu_item_id=drink.id) }}">
+                    <button type="submit">Remove Favorite</button>
+                </form>
+            </li>
+        {% else %}
+            <li>You have no favorite drinks yet.</li>
+        {% endfor %}
+    </ul>
+    <style>
+        .favorite-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .favorite-drinks {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .favorite-drink-menu {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .favorite-drink-menu h3 {
+            margin-top: 0;
+        }
+    </style>
+    <section class="filter-favorite-btn">
+        
+    </section>
+
+
+</section>
+
+{% endblock %}
