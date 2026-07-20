@@ -98,7 +98,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 
@@ -117,7 +118,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .home:hover {
@@ -135,7 +137,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .menu:hover {
@@ -151,7 +154,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .about:hover {
@@ -168,7 +172,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .favorites:hover {
@@ -184,7 +189,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .contact:hover {
@@ -201,7 +207,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .orders:hover {
@@ -225,7 +232,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
     margin-top: auto;
     box-shadow: 9px 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -250,7 +258,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .location-btn:hover {
@@ -332,7 +341,8 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Remove underline from the link */
+    text-decoration: none;
+    /* Remove underline from the link */
 }
 
 .show-offers-btn:hover {
