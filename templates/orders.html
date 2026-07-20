@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Your Orders - Good Days Coffee{% endblock %}
+
+{% block content %}
+<section class="order-section">
+    <h2>Your Orders</h2>
+    {% if orders %}
+        <ul class="order-list">
+            {% for order in orders %}
+                <li class="order-item">
+                    <h3>Order #{{ order.id }}</h3>
+                    <p><strong>Item:</strong> {{ order.menu_item.name }}</p>
+                    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+                    <p><strong>Total Price:</strong> ${{ "%.2f"|format(order.total_price) }}</p>
+                    <p><strong>Status:</strong> {{ order.status }}</p>
+                    {% if order.status in ['pending', 'confirmed'] %}
+                        <a href="{{ url_for('orders.edit_order', order_id=order.id) }}">Edit</a>
+                        <form method="POST" action="{{ url_for('orders.cancel_order', order_id=order.id) }}">
+                            <button type="submit">Cancel Order</button>
+                        </form>
+                    {% endif %}
+                    {% if order.status == 'pending' %}
+                        <form method="POST" action="{{ url_for('orders.payment', order_id=order.id) }}">
+                            <button type="submit">Pay Now</button>
+                        </form>
+                    {% endif %}
+                    <form method="POST" action="{{ url_for('orders.update_order_status', order_id=order.id) }}">
+                        <select name="status">
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="canceled">Canceled</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <button type="submit">Update Status</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no orders yet. <a href="{{ url_for('menu.menu') }}">Browse our menu</a> to place your first order!</p>
+    {% endif %}
+</section>
+<style>
+    .order-section {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .order-list {
+        list-style: none;
+        padding: 0;
+    }
+    .order-item {
+        border-bottom: 1px solid #eee;
+        padding: 16px 0;
+    }
+    .order-item h3 {
+        margin: 0 0 8px;
+        color: #333;
+    }
+    .order-item p {
+        margin: 4px 0;
+        color: #666;
+    }
+    .order-item form {
+        display: inline-block;
+        margin: 8px 8px 0 0;
+    }
+    .order-item button {
+        padding: 8px 12px;
+        background-color: #0cdf75;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .order-item button:hover {
+        background-color: #09b36c;
+    }
+    .order-item select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+</style>
+
+
+{% endblock %}
