@@ -43,6 +43,8 @@ def create_app() -> None:
         # creating tables
         from models.user import User
         from models.menu_items import MenuItem
+        from models.order import Order
+        from models.favorite_items import FavoriteItem
         db.create_all() # Create database tables based on the defined models
         
         

@@ -1,0 +1,478 @@
+{% extends "base.html" %}
+
+{% block title %} Menu {% endblock %}
+
+{% block content %}
+<section class="menu-container">
+    <h2>Our Menu</h2>
+    <p>Explore our delicious offerings</p>
+</section>
+<style>
+    .menu-container {
+        min-height: 220px;
+        padding: 15px 20px;
+        background-color: green;
+    }
+
+    .menu-container h2 {
+        font-size: 50px;
+        color: white;
+    }
+
+    .menu-container p {
+        font-size: 30px;
+        color: white;
+    }
+</style>
+<!-- sections: coffee, tea, lemonade, breakfast, lunch -->
+<section class="filter-section-btn">
+    <h3>Filter by category</h3>
+    <div class="filter-button">
+        <button class="filter-btn" data-category="coffee">Coffee</button>
+        <button class="filter-btn" data-category="tea">Tea</button>
+        <button class="filter-btn" data-category="lemonade">Lemonade</button>
+        <button class="filter-btn" data-category="breakfast">Breakfast</button>
+        <button class="filter-btn" data-category="lunch">Lunch</button>
+        <button class="filter-btn" data-category="all">All</button>
+    </div>
+</section>
+<script>
+    // JavaScript to handle filter button clicks
+    // when the coffee button is clicked, only show coffee items and coffee title, and hide the rest
+    // when the tea button is clicked, only show tea items and tea title, and hide the rest
+    // when the lemonade button is clicked, only show lemonade items and lemonade title, and hide the rest
+    // when the breakfast button is clicked, only show breakfast items and breakfast title, and hide the rest
+    // when the lunch button is clicked, only show lunch items and lunch title, and hide the rest
+    // when the all button is clicked, show all items
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            document.querySelectorAll('.menu-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            document.querySelectorAll('.menu-section h3').forEach(title => {
+                if (category === 'all' || title.classList.contains(category + '-category')) {
+                    title.style.display = 'block';
+                } else {
+                    title.style.display = 'none';
+                }
+            });
+        });
+    });
+
+</script>
+<style>
+    .filter-section-btn {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .filter-section h3 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .filter-button {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #0d9fd8;
+        color: white;
+        cursor: pointer;
+    }
+
+    .filter-btn:hover {
+        background-color: #0a7bbf;
+    }
+</style>
+<!-- section for the sizes: small, medium, large, extra large   -->
+<section class="size-section">
+    <h3>Choose your size</h3>
+    <div class="size-options">
+        <button class="size-btn" data-size="small">Small</button>
+        <button class="size-btn" data-size="medium">Medium</button>
+        <button class="size-btn" data-size="large">Large</button>
+        <button class="size-btn" data-size="extra-large">Extra Large</button>
+    </div>
+</section>
+<script>
+    // JavaScript to handle size button clicks
+    // When a size button is clicked, it should highlight the selected size and store the selected size in a variable
+    // The selected size can be used later when adding an item to the cart
+
+    let selectedSize = null; // Variable to store the selected size
+    document.querySelectorAll('.size-btn').forEach(button => { // Add click event listener to each size button
+        button.addEventListener('click', () => { // When a size button is clicked
+            // Store the selected size in the variable
+            selectedSize = button.getAttribute('data-size');
+            // Highlight the selected size button by adding a class to it and removing the class from the other buttons
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('selected'));
+            // Add the 'selected' class to the clicked button
+            button.classList.add('selected');
+        });
+    });
+</script>
+<style>
+    .size-section {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .size-section h3 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .size-options {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .size-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        background-color: #0d9fd8;
+        color: white;
+        cursor: pointer;
+    }
+
+    .size-btn:hover {
+        background-color: #0a7bbf;
+    }
+
+    .size-btn.selected {
+        background-color: #0a7bbf;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<!-- option to pick for ice: light ice, extra ice, no ice, cream: no cream, extra cream, sugar: no sugar, extra sugar
+-->
+<section class="customization-section">
+    <h3>Customize your drink</h3>
+    <div class="customization-options">
+        <div class="customization-group">
+            <h4>Ice</h4>
+            <button class="customization-btn" data-customization="light-ice">Light Ice</button>
+            <button class="customization-btn" data-customization="extra-ice">Extra Ice</button>
+            <button class="customization-btn" data-customization="no-ice">No Ice</button>
+        </div>
+        <div class="customization-group">
+            <h4>Cream</h4>
+            <button class="customization-btn" data-customization="no-cream">No Cream</button>
+            <button class="customization-btn" data-customization="extra-cream">Extra Cream</button>
+        </div>
+        <div class="customization-group">
+            <h4>Sugar</h4>
+            <button class="customization-btn" data-customization="no-sugar">No Sugar</button>
+            <button class="customization-btn" data-customization="extra-sugar">Extra Sugar</button>
+        </div>
+        <div class="customization-group">
+            <h4>Milk</h4>
+            <button class="customization-btn" data-customization="no-milk">No Milk</button>
+            <button class="customization-btn" data-customization="extra-milk">Extra Milk</button>
+        </div>
+        <div class="customization-group">
+            <h4>Flavor</h4>
+            <button class="customization-btn" data-customization="vanilla">Vanilla</button>
+            <button class="customization-btn" data-customization="caramel">Caramel</button>
+            <button class="customization-btn" data-customization="hazelnut">Hazelnut</button>
+        </div>
+        <div class="customization-group">
+            <h4>Whipped Cream</h4>
+            <button class="customization-btn" data-customization="no-whipped-cream">No Whipped Cream</button>
+            <button class="customization-btn" data-customization="extra-whipped-cream">Extra Whipped Cream</button>
+        </div>
+        <div class="customization-group">
+            <h4>Espresso</h4>
+            <button class="customization-btn" data-customization="no-espresso">No Espresso</button>
+            <button class="customization-btn" data-customization="extra-espresso">Extra Espresso</button>
+        </div>
+    </div>
+</section>
+<script>
+    // JavaScript to handle customization button clicks
+    // When a customization button is clicked, it should highlight the selected customization and store the selected customization in a variable
+    // The selected customization can be used later when adding an item to the cart
+
+    let selectedCustomizations = {}; // Object to store the selected customizations
+    document.querySelectorAll('.customization-btn').forEach(button => { // Add click event listener to each customization button
+        button.addEventListener('click', () => { // When a customization button is clicked
+            const customization = button.getAttribute('data-customization');
+            const group = button.closest('.customization-group').querySelector('h4').textContent.toLowerCase();
+            // Store the selected customization in the object
+            selectedCustomizations[group] = customization;
+            // Highlight the selected customization button by adding a class to it and removing the class from the other buttons in the same group
+            button.closest('.customization-group').querySelectorAll('.customization-btn').forEach(btn => btn.classList.remove('selected'));
+            // Add the 'selected' class to the clicked button
+            button.classList.add('selected');
+        });
+    });
+</script>
+<style>
+    .customization-section {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .customization-section h3 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .customization-options {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .customization-group {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 200px;
+    }
+
+    .customization-group h4 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .customization-btn {
+        padding: 10px 20px;
+        background-color: #0d9fd8;
+        color: #fff;
+        border: none;
+    }
+
+    .customization-btn:hover {
+        background-color: #0a7bbd;
+    }
+
+    .customization-btn.selected {
+        background-color: #0a7bbd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<section class="menu-section">
+    <h3 class="coffee-category">Coffee</h3>
+    {% for item in menu_items %}
+    {% if item.category == 'coffee' %}
+    <div class="menu-item" data-category="{{ item.category }}">
+        {% if item.image_filename %}
+        <img src=" {{ url_for('static', filename='img/' ~ item.image_filename) }}" class="menu-item-image"
+            alt="{{ item.name }}">
+        {% endif %}
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+        <form method="POST" action="{{ url_for('orders.add_to_cart', menu_item_id=item.id) }}">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('favorite.add_favorite', menu_item_id=item.id) }}">
+            <button type="submit" class="favorite-btn">Add Favorite</button>
+        </form>
+        <!-- <button class="add-to-cart-btn" data-item-id="{{ item.id }}">Add to Cart</button> -->
+    </div>
+    {% endif %}
+    {% endfor %}
+    <style>
+        .menu-section {
+            padding: 10px;
+            /* make it horizontal */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .menu-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .menu-section h3 {
+            width: 100%;
+            font-size: 40px;
+            color: #05070b;
+            text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
+        }
+
+        .menu-section .menu-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            width: calc(20% - 100px);
+            box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-section .menu-item:hover {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            background-color: rgba(236, 13, 13, 0.9);
+        }
+
+        .menu-section .menu-item h4 {
+            margin-top: 0;
+        }
+
+        .menu-section .menu-item p {
+            margin: 5px 0;
+        }
+    </style>
+    <h3 class="tea-category">Tea</h3>
+    {% for item in menu_items %}
+    {% if item.category == 'tea' %}
+    <div class="menu-item" data-category="{{ item.category }}">
+        {% if item.image_filename %}
+        <img src=" {{ url_for('static', filename='img/' ~ item.image_filename) }}" class="menu-item-image"
+            alt="{{ item.name }}">
+        {% endif %}
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+        <form method="POST" action="{{ url_for('orders.add_to_cart', menu_item_id=item.id) }}">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('favorite.add_favorite', menu_item_id=item.id) }}">
+            <button type="submit" class="favorite-btn">Add Favorite</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <style>
+        .tea-category {
+            width: 100%;
+            font-size: 40px;
+            color: #05070b;
+            text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
+        }
+
+        .tea-category menu-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            width: calc(20% - 100px);
+            box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <h3 class="lemonade-category">Lemonade</h3>
+    {% for item in menu_items %}
+    {% if item.category == 'lemonade' %}
+    <div class="menu-item" data-category="{{ item.category }}">
+        {% if item.image_filename %}
+        <img src=" {{ url_for('static', filename='img/' ~ item.image_filename) }}" class="menu-item-image"
+            alt="{{ item.name }}">
+        {% endif %}
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+        <form method="POST" action="{{ url_for('orders.add_to_cart', menu_item_id=item.id) }}">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('favorite.add_favorite', menu_item_id=item.id) }}">
+            <button type="submit" class="favorite-btn">Add Favorite</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <style>
+        .lemonade-category {
+            width: 100%;
+            font-size: 40px;
+            color: #05070b;
+            text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
+        }
+    </style>
+    <h3 class="breakfast-category">Breakfast</h3>
+    {% for item in menu_items %}
+    {% if item.category == 'breakfast' %}
+    <div class="menu-item" data-category="{{ item.category }}">
+        {% if item.image_filename %}
+        <img src=" {{ url_for('static', filename='img/' ~ item.image_filename) }}" class="menu-item-image"
+            alt="{{ item.name }}">
+        {% endif %}
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+        <form method="POST" action="{{ url_for('orders.add_to_cart', menu_item_id=item.id) }}">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('favorite.add_favorite', menu_item_id=item.id) }}">
+            <button type="submit" class="favorite-btn">Add Favorite</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <style>
+        .breakfast-category {
+            width: 100%;
+            font-size: 40px;
+            color: #05070b;
+            text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
+        }
+    </style>
+    <h3 class="lunch-category">Lunch</h3>
+    {% for item in menu_items %}
+    {% if item.category == 'lunch' %}
+    <div class="menu-item" data-category="{{ item.category }}">
+        {% if item.image_filename %}
+        <img src=" {{ url_for('static', filename='img/' ~ item.image_filename) }}" class="menu-item-image"
+            alt="{{ item.name }}">
+        {% endif %}
+        <h4>{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+        <form method="POST" action="{{ url_for('orders.add_to_cart', menu_item_id=item.id) }}">
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+        <form method="POST" action="{{ url_for('favorite.add_favorite', menu_item_id=item.id) }}">
+            <button type="submit" class="favorite-btn">Add Favorite</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <style>
+        .lunch-category {
+            width: 100%;
+            font-size: 40px;
+        }
+
+        .lunch-category {
+            color: #05070b;
+            text-shadow: 4px 4px 4px rgba(10, 239, 167, 0.5);
+        }
+
+        .lunch-category .menu-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            width: calc(20% - 100px);
+            box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</section>
+
+</section>
+
+
+
+{% endblock %}

@@ -7,6 +7,7 @@ Purpose: Base template for the Good Days Coffee application.
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@ Purpose: Base template for the Good Days Coffee application.
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
     <!-- site header container -->
     <header class="site-container">
@@ -34,35 +36,38 @@ Purpose: Base template for the Good Days Coffee application.
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%; 
+                width: 100%;
             }
+
             .site-brand {
                 display: flex;
                 align-items: center;
                 gap: 12px;
                 margin-left: 40px;
             }
+
             .header-title {
                 font-size: 24px;
                 text-shadow: 3px 3px 3px rgba(207, 16, 16, 0.5);
                 color: #05070b;
                 margin: 0;
             }
+
             .logo {
                 width: 50px;
                 height: 50px;
                 object-fit: contain;
             }
+
             body {
                 background-color: #f0f5f1;
                 margin: 0;
                 /* Fixed header sits on top of the page, so reserve space under it. */
                 padding-top: 58px;
             }
-            
         </style>
         <!-- site navigation -->
-        <nav class="right-nav"> 
+        <nav class="right-nav">
             <a class="home" href="{{ url_for('pages.index') }}">Home</a>
             <a class="menu" href="{{ url_for('menu.menu') }}">Menu</a>
             <a class="about" href="{{ url_for('pages.about') }}">About Us</a>
@@ -70,8 +75,15 @@ Purpose: Base template for the Good Days Coffee application.
             <a class="contact" href="{{ url_for('pages.contact') }}">Contact</a>
             <a class="orders" href="{{ url_for('orders.get_all_orders') }}">Orders</a>
             <a class="login" href="{{ url_for('auth.login') }}">
-            <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Login"></a>
-            <span class="login-title">login</span>
+                <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="Login"></a>
+            <!-- display user info if logged in -->
+             {% if session.get('user_id') %}
+                <a href="{{ url_for('auth.logout')}}">Logout</a>
+                <span class="user-info">Welcome, {{ session.get('username') }}!</span>
+            {% else %}
+                <a href="{{ url_for('auth.login')}}">Login</a>
+            {% endif %}
+
         </nav>
     </header>
     {% block content %}
@@ -87,10 +99,12 @@ Purpose: Base template for the Good Days Coffee application.
                 padding: 12px 0;
                 margin-top: 0;
             }
+
             .footer-container p {
                 margin: 0;
             }
         </style>
     </footer>
 </body>
+
 </html>

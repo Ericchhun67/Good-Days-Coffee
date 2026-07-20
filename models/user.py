@@ -39,7 +39,25 @@ class User(db.Model):
         
         
     def check_password(self, password):
+        # check if the provided password matches the stored hashed password
+        if not self.password:
+            return False
         return check_password_hash(self.password, password)
+    
+    
+    def update_email(self, new_email):
+        self.email = new_email
+        db.session.commit()
+        return self.email
+    
+    def update_username(self, new_username):
+        # check if the new username is already taken by another user
+        existing_user = User.query.filter_by(username=new_username).first()
+        if existing_user and existing_user.id != self.id:
+            raise ValueError("Username already taken. Please choose another.")
+        self.username = new_username
+        db.session.commit()
+        return self.username
     
         
     

@@ -4,7 +4,14 @@
 
 {% block content %}
 <section class="contact-section">
-
+    <h2>Contact Us</h2>
+    <p>We'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out to us.</p>
+    <form action="/submit-feedback" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
 </section>
 <style>
     .contact-section {
@@ -31,12 +38,121 @@
         font-size: 45px;
         color: #f6f5f5;
     }
+    .contact-section form {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-section input, .contact-section textarea {
+        width: 300px;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .contact-section button {
+        padding: 10px 20px;
+        background-color: #0d9fd8;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .contact-section button:hover {
+        background-color: #0a7bbd;
+    }
 </style>
-
 <!-- social media links can be added here -->
 <section class="social-media-section">
     <h2>Connect with Us</h2>
     <p>Follow us on social media for the latest updates and promotions!</p>
     <!-- social media icons and links can be added here -->
+     <div class="social-icon">
+        <a href="https://www.instagram.com" target="_blank"><img src="{{ url_for('static', filename='img/social.png') }}" alt="Instagram"></a>
+        <p>Instagram</p>
+        <a href="https://www.facebook.com" target="_blank"><img src="{{ url_for('static', filename='img/facebook.png') }}" alt="Facebook"></a>
+        <p>Facebook</p>
+        <a href="https://www.twitter.com" target="_blank"><img src="{{ url_for('static', filename='img/twitter.png') }}" alt="Twitter"></a>
+        <p>Twitter</p>
+     </div>
 </section>
+<style>
+    .social-media-section {
+        width: 100%;
+        min-width: 20px;
+        min-height: 300px;
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #0d9fd8;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .social-media-section h2 {
+        font-size: 50px;
+        color: #05070b;
+        margin-bottom: 16px;
+    }
+    .social-media-section p {
+        font-size: 30px;
+        color: #05070b;
+    }
+    .social-icon {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .social-icon img {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px;
+        transition: transform 0.3s ease;
+    }
+    .social-icon img:hover {
+        transform: scale(1.2);
+    }
+</style>
+<section>
+    <div class="Get_in_touch_contact">
+        <h2>Get in Touch</h2>
+        <p>Have a question or feedback? We'd love to hear from you!</p>
+        <div class="contact-info">
+            <p>Email: contact@coffeebucks.com</p>
+            <p>Phone: (123) 456-7890</p>
+            <p>Address: 123 Coffee St, Coffee City, CO 12345</p>
+        </div>
+    </div>
+</section>
+<style>
+    .Get_in_touch_contact {
+        width: 100%;
+        min-width: 20px;
+        min-height: 300px;
+        padding: 40px 20px;
+        text-align: center;
+        background-color: #f6f5f5;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .Get_in_touch_contact h2 {
+        font-size: 50px;
+        color: #05070b;
+        margin-bottom: 16px;
+    }
+    .Get_in_touch_contact p {
+        font-size: 30px;
+        color: #05070b;
+    }
+    .contact-info {
+        margin-top: 20px;
+    }
+    .contact-info p {
+        font-size: 25px;
+        color: #05070b;
+        margin: 5px 0;
+    }
+</style>
 {% endblock %}

@@ -89,7 +89,7 @@ purpose: This file defines the HTML template for the about page of the Good Days
 </style>
 <!-- about our journey section  -->
 <section class="about-slideshow">
-    <h2 class="about-title">Our Journey - need to fix</h2>
+    <h2 class="about-title">Our Journey</h2>
     <!-- slideshow content will go here and it will feature images and descriptions of our journey
      and a dot navigation for the slideshow. 
     -->
@@ -101,6 +101,14 @@ purpose: This file defines the HTML template for the about page of the Good Days
         <div class="slide slide2">
             <img src="{{ url_for('static', filename='img/our-journey2.jpg')}}" alt="Our Journey 2" style="width:500px; height: 300px;">
             <div class="slide-description">Expanding our reach to new locations.</div>
+        </div>
+        <div class="slide slide3">
+            <img src="{{ url_for('static', filename='img/our-journey3.jpg')}}" alt="Our Journey 3" style="width:500px; height: 300px;">
+            <div class="slide-description">Building a strong community of coffee lovers.</div>
+        </div>
+        <div class="slide slide4">
+            <img src="{{ url_for('static', filename='img/our-journey4.jpg')}}" alt="Our Journey 4" style="width:500px; height: 300px;">
+            <div class="slide-description">Our commitment to sustainability and ethical sourcing.</div>
         </div>
     </div>
     <script>
